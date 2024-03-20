@@ -100,6 +100,7 @@ import org.eclipse.cdt.core.parser.OffsetLimitReachedException;
 import org.eclipse.cdt.core.parser.ParseError;
 import org.eclipse.cdt.core.parser.ParserMode;
 import org.eclipse.cdt.core.parser.util.CharArrayUtils;
+import org.eclipse.cdt.internal.core.parser.scanner.CPreprocessor;
 import org.eclipse.cdt.internal.core.parser.scanner.ILocationResolver;
 
 /**
@@ -510,7 +511,12 @@ public abstract class AbstractGNUSourceCodeParser implements ISourceCodeParser {
 	 * @param type the expected type of the next token.
 	 */
 	protected final IToken consume(int type) throws EndOfFileException, BacktrackException {
-		final IToken result = consume();
+		IToken result = consume();
+
+		while (result.getType() == CPreprocessor.tSCOPE_MARKER) {
+			result = consume();
+		}
+
 		if (result.getType() != type)
 			throwBacktrack(result);
 		return result;

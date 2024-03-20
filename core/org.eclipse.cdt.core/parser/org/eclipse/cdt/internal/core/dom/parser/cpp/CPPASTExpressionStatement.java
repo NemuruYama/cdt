@@ -24,8 +24,7 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.semantics.ExecExpressionStat
 /**
  * @author jcamelon
  */
-public class CPPASTExpressionStatement extends CPPASTAttributeOwner
-		implements IASTExpressionStatement, ICPPExecutionOwner {
+public class CPPASTExpressionStatement extends CPPASTAttributeOwner implements IASTExpressionStatement, ICPPExecutionOwner {
 	private IASTExpression expression;
 
 	public CPPASTExpressionStatement() {

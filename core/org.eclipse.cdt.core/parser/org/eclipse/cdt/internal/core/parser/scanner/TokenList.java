@@ -89,6 +89,7 @@ public class TokenList {
 	public final TokenList cloneTokens() {
 		TokenList result = new TokenList();
 		for (Token t = fFirst; t != null; t = (Token) t.getNext()) {
+			// TODO: Probably not the place where the ExpansionBoundary gets removed
 			if (t.getType() != CPreprocessor.tSCOPE_MARKER) {
 				result.append(t.clone());
 			}

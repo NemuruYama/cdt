@@ -2217,8 +2217,15 @@ public class CPreprocessor implements ILexerLog, IScanner, IAdaptable {
 		final ImageLocationInfo[] ili = expander.clearImageLocationInfos();
 		final Token last = replacement.last();
 		final int length = last == null ? 0 : last.getEndOffset();
-		ILocationCtx ctx = fLocationMap.pushMacroExpansion(identifier.getOffset(), identifier.getEndOffset(),
-				lexer.getLastEndOffset(), length, macro, expansions, ili);
+		ILocationCtx ctx = fLocationMap.pushMacroExpansion(
+			identifier.getOffset(), 
+			identifier.getEndOffset(), 
+			lexer.getLastEndOffset(), 
+			length, 
+			macro, 
+			expansions, 
+			ili
+		);
 		fCurrentContext = new ScannerContext(ctx, fCurrentContext, replacement);
 		return true;
 	}

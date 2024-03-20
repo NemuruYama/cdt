@@ -46,7 +46,7 @@ public class MacroExpander {
 	 * handle recursive expansions and to figure out whether spaces are required during a stringify
 	 * operation across such boundaries.
 	 */
-	public static final class ExpansionBoundary extends Token {
+	public static final class ExpansionBoundary extends Token { // TODO: This is the expansion boundary, try to find it during the parsing
 		private boolean fIsStart;
 		private final PreprocessorMacro fMacro;
 
@@ -981,7 +981,7 @@ public class MacroExpander {
 				}
 				break;
 
-			case CPreprocessor.tSCOPE_MARKER:
+			// case CPreprocessor.tSCOPE_MARKER: // TODO: Probably the place where it gets removed
 			case CPreprocessor.tSPACE:
 			case CPreprocessor.tNOSPACE:
 				replacement.removeBehind(l);
